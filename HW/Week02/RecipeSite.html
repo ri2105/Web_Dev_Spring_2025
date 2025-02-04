@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ridwan's Secret Recipe</title>
+    <meta
+      name="recipe"
+      content="How to make perfect buttermilk pancakes?"
+    />
+    <meta name="keywords" content="HTML, Semantic HTML, Tutorial" />
+    <meta name="author" content="NYU" />
+  </head>
+  <body>
+    <header> 
+        <h2>Buttermilk Pancakes</h2>
+    </header>
+    <nav>
+        <!-- An image sourced from another site on the web -->
+        <img
+          src="https://tornadoughalli.com/wp-content/uploads/2021/12/BUTTERMILK-PANCAKE-RECIPE-3.jpg"
+          alt="A tall stack of fluffy pancakes"
+          style="width: 5%"
+        />
+        <!-- An image loaded from a file that is a sibling of the html file in the same project-->
+        <img src="pancake.jpg" alt="Pancakes with butter." />
+        <!-- An image loaded from a subfolder withing the same project -->
+        <img src="img/pancake.jpg" alt="Something about butter." />
+    </nav>
+    
+    <section>
+        <p>This is a paragraph describing my recipe.</p>
+        <!-- UL = unordered list, bulleted -->
+        <ul>
+          <li><a href="#">Flour</a></li>
+          <li>Sugar</li>
+          <li>
+            Milk
+            <ol>
+              <li>One Percent</li>
+              <li>Whole Milk</li>
+              <li>Heavy Cream</li>
+            </ol>
+          </li>
+          <li>Butter</li>
+          <li>Eggs</li>
+        </ul>
+    </section>
+
+    <section>
+        <!-- OL = ordered list order/numbering matters -->
+        <ol>
+          <li>Mix it up.</li>
+          <li>Heat it up.</li>
+          <li>Pour some batter.</li>
+          <li>
+            Flip it.
+            <ul>
+              <li>One Percent</li>
+              <li>Whole Milk</li>
+              <li>Heavy Cream</li>
+            </ul>
+          </li>
+          <li>Eat it.</li>
+        </ol>
+    </section>
+
+    <footer>
+        <!-- Link to another page within your own site/project -->
+        <a href="about/index.html">Go To About Page</a>
+    
+        <!-- Link to element on same page -->
+        <a href="#top">Back to Top</a>
+    </footer>
+
+  </body>
+</html>
+    
