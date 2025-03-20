@@ -1,7 +1,7 @@
 # Portfolio Website Documentation
 
 ## Overview
-This is a responsive portfolio website built using HTML and CSS. It features a navigation menu, hero section, about section, project showcase, contact form, and a footer with social links.
+This is a responsive portfolio website built using HTML and CSS. It features a navigation menu, home section, about section, project showcase, contact form, and a footer with social links.
 
 ## File Structure
 - index.html (Main HTML file)
@@ -18,7 +18,7 @@ This is a responsive portfolio website built using HTML and CSS. It features a n
 - Includes a logo and navigation links.
 - Adapts to smaller screens using media queries.
 
-### 2. Hero Section
+### 2. Home Section
 - Displays a welcome message and a brief introduction.
 - Uses a background color to stand out.
 
