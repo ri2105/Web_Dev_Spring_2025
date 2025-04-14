@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    #feedback {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #444;
+    }
+    #resetBtn {
+      display: none;
+      background-color: #ffc107;
+    }
+  </style>
+
+  <script>
+    let secretNumber;
+    let attempts;
+
+    function checkGuess() {
+      const userGuess = parseInt(document.getElementById('guessInput').value);
+      const feedback = document.getElementById('feedback');
+
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 20) {
+        feedback.textContent = "Please enter a number between 1 and 20.";
+        return;
+      }
+
+      attempts++;
+
+      if (userGuess === secretNumber) {
+        feedback.textContent = `Correct! The number was ${secretNumber}. You guessed it in ${attempts} attempt(s)!`;
+        feedback.style.color = "green";
+        document.getElementById('resetBtn').style.display = "inline-block";
+      } else if (userGuess < secretNumber) {
+        feedback.textContent = "Too low! Try again.";
+        feedback.style.color = "#555";
+      } else {
+        feedback.textContent = "Too high! Try again.";
+        feedback.style.color = "#555";
+      }
+    }
+
+    function resetGame() {
+      secretNumber = Math.floor(Math.random() * 20) + 1;
+      attempts = 0;
+      document.getElementById('guessInput').value = '';
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('feedback').style.color = "#444";
+      document.getElementById('resetBtn').style.display = "none";
+    }
+
+    // Make sure DOM is ready before attaching event listeners
+    window.onload = function () {
+      resetGame();
+
+      document.getElementById('submitBtn').addEventListener('click', checkGuess);
+      document.getElementById('resetBtn').addEventListener('click', resetGame);
+    };
+  </script>
+</head>
+<body>
+
+  <h1>Guess the Number (1-20)</h1>
+  <p>Can you guess the number I'm thinking of?</p>
+
+  <input type="number" id="guessInput" min="1" max="20" placeholder="Enter your guess">
+  <button id="submitBtn">Submit Guess</button>
+  <button id="resetBtn">Play Again</button>
+
+  <div id="feedback"></div>
+
+</body>
+</html>
