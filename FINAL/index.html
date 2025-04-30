@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridwan Islam | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Custom Navbar Styling */
+        .navbar {
+            background-color: #222;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1040;
+            
+        }
+        .navbar-brand {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #e67e22;
+        }
+        .navbar-toggler-icon {
+            background-color: #f39c12;
+        }
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #f39c12;
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #profile {
+            height: 100vh; /* Full screen height */
+            background: url('img/Civil.jpg') center center/cover no-repeat;
+            color: white;
+            position: relative;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #profile::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+            z-index: 1;
+        }
+
+        #profile .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #profile h1 {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        #profile p {
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            animation: bounce 2s infinite;
+            color: #fff;
+            z-index: 3;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        #about, #projects, #contact {
+            background: #fff;
+            color: #333;
+        }
+
+        .about-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            max-width: 100%; /* Responsive for smaller screens */
+        }
+
+        /* Dark mode overrides for sections */
+        .dark-mode #about,
+        .dark-mode #projects,
+        .dark-mode #contact {
+            background: #222;
+            color: #fff;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode input, .dark-mode textarea {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+        button {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e67e22;
+        }
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 2s ease-in;
+        }
+        .social-links a {
+            color: #f39c12;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* Night button*/
+        .btn-theme {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            padding: 15px;
+            width: 50px;
+            height: 50px;
+            background: #f39c12;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 999;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dark-mode .btn-theme {
+            background: #1abc9c;
+        }
+        .btn-theme i {
+            font-size: 24px;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        #projects {
+            padding: 80px 20px; 
+            min-height: 700px; 
+        }
+
+        #projects .container {
+            max-width: 1200px; 
+        }
+
+        .project-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between; 
+            align-items: stretch;  
+        }
+
+        .project-card {
+            flex: 1 1 30%; 
+            min-width: 300px;  
+            max-width: 350px; 
+            background: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 25px;
+            box-sizing: border-box;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            border-color: #f39c12;
+        }
+        .dark-mode .project-card {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            box-shadow: 0 8px 16px rgba(255,255,255,0.05);
+        }
+        .project-card img {
+            width: 100%;
+            max-height: 250px;  
+            object-fit: contain;  
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .project-card ul {
+            text-align: left;
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-theme" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#profile">
+                <img src="img/my_picture.jpeg" alt="Ridwan Islam" width="40" height="40" class="rounded-circle me-2">
+                Ridwan Islam
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#profile">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section id="profile" class="d-flex align-items-center justify-content-center">
+        <div class="container text-center">
+            <h1 class="display-2 fw-bold">Ridwan Islam</h1>
+            <p class="lead">Aspiring Civil Engineer | Solar Energy Enthusiast | Future Builder</p>
+        </div>
+        <div class="scroll-down">&#8595;</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="mb-5">About Me</h2>
+            <div class="row align-items-center">
+                <!-- Picture on the left -->
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <img src="img/my_picture.jpeg" alt="Ridwan Islam Profile" class="about-img">
+                </div>
+                <!-- Text on the right -->
+                <div class="col-md-8 text-start">
+                    <p>Hello! I'm Ridwan Islam, currently pursuing a Bachelor of Science in Civil Engineering with a Minor in Structural Engineering and Construction Management at New York University (NYU). I am expected to graduate in May 2026. Through my studies, I have developed a strong foundation in technical programs like AutoCAD, Revit, Civil 3D, Safe, and Etabs, while gaining practical knowledge in project management and construction contracts.</p>
+                    <p>Professionally, I have built a versatile career across construction management, solar project development, and education. As an Analyst at AMS Construction, LLC, I lead critical phases of solar energy projects, contributing to sustainable energy solutions. I also bring my passion for teaching to life as a Math and Science instructor and administrator at Quran Academy for Young Scholars. With a background in IT support and marketing from Starling Diagnostics, I take pride in combining engineering expertise, project coordination, and communication skills to drive success across all my endeavors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="padding: 60px 20px; text-align: center;">
+        <div class="container">
+            <h2 class="mb-4">Work Experience</h2>
+            <div class="project-cards-container">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="img/AMS.png" alt="Project 1 Image">
+                    <h5 class="card-title">AMS Construction, LLC (Solar Projects)</h5>
+                    <p class="card-text">
+                        <strong>Role:</strong> Analyst<br>
+                        <strong>Duration:</strong> Aug 2023 - Present
+                    </p>
+                    <ul>
+                        <li>Led the interconnection phase for all solar projects within the company.</li>
+                        <li>Coordinated with utility companies (Consolidated Edison and FirstEnergy) for interconnection approvals and PTO documentation.</li>
+                        <li>Filed applications for NYSERDA rebates for all solar projects.</li>
+                    </ul>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="img/Quran_Academy.png" alt="Project 2 Image">
+                    <h5 class="card-title">Quran Academy for Young Scholars</h5>
+                    <p class="card-text">
+                        <strong>Role:</strong> Teacher and Administrator<br>
+                        <strong>Duration:</strong> Sept 2019 - Present
+                    </p>
+                    <ul>
+                        <li>Instructed Math and Science for grades 4-8.</li>
+                        <li>Managed the school's student course database in Schoology.</li>
+                        <li>Provided technical support to resolve campus issues.</li>
+                    </ul>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="img/SDC.jpg" alt="Project 3 Image">
+                    <h5 class="card-title">Starling Diagnostics (Radiology Center)</h5>
+                    <p class="card-text">
+                        <strong>Role:</strong> Information Technology Intern<br>
+                        <strong>Duration:</strong> Jun 2020 - Aug 2020
+                    </p>
+                    <ul>
+                        <li>Improved the interior design layout of the radiology center.</li>
+                        <li>Simplified extensive circuitry within the IT room for easier maneuverability.</li>
+                        <li>Developed ads on Canva to advertise various medical services offered.</li>
+                        <li>Worked on posters for COVID-19 awareness campaigns.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <img src="img/GO_Project.PNG" alt="Project 3 Image">
+                    <h5 class="card-title">Go Project</h5>
+                    <p class="card-text">
+                        <strong>Role:</strong>Policy Intern<br>
+                        <strong>Duration:</strong>  Jul 2020 - Aug 2020
+                    </p>
+                    <ul>
+                        <li>Was a go-getter supporting disadvantaged children.</li>
+                        <li>Attended professional development session.</li>
+                        <li>Learned and discussed injustices implanted in the education system and how to help children suffering them.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form  action="https://formspree.io/f/xwpovkjk" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea rows="5" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+
+                <input name="subject" type="hidden" value="New Submission from {{name}}"/>
+            </form>
+        </div>
+    </section>
+
+    <button id="backToTop" style="display: none; position: fixed; bottom: 40px; right: 20px; background-color: #f39c12; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; z-index: 999;">↑</button>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ridwan Islam</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ridwan-islam-931104267">LinkedIn</a>
+            <a href="https://github.com/ri2105/Web_Dev_Spring_2025.git">GitHub</a>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const toggle = document.querySelector('#theme-toggle');
+        const body = document.body;
+    
+        function updateButtonIcon() {
+            toggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+    
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        updateButtonIcon();
+    
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            updateButtonIcon();
+        });
+    
+        document.querySelector('.scroll-down').addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+    
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+    
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+    
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    
+        // Collapse navbar when a nav-link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
